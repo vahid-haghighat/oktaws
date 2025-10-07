@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "Oktaws SAML Interceptor",
+  "version": "1.0.0",
+  "description": "Automatically captures SAML assertions from AWS signin pages for oktaws CLI",
+  "permissions": [
+    "webRequest",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.signin.aws.amazon.com/*",
+    "*://*.console.aws.amazon.com/*",
+    "*://*.okta.com/*",
+    "*://*.okta-emea.com/*",
+    "*://*.oktapreview.com/*",
+    "http://localhost:*/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://*.signin.aws.amazon.com/*",
+        "*://*.console.aws.amazon.com/*",
+        "*://*.okta.com/*",
+        "*://*.okta-emea.com/*",
+        "*://*.oktapreview.com/*"
+      ],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+}
+
