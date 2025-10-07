@@ -5,10 +5,13 @@ import (
 	"os"
 
 	"github.com/vahid-haghighat/oktaws/internal"
+	"github.com/vahid-haghighat/oktaws/version"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 )
+
+var versionFlag bool
 
 var rootCmd = &cobra.Command{
 	Use:   "oktaws",
@@ -25,6 +28,10 @@ func Execute() {
 	}
 }
 func runWebAuth(cmd *cobra.Command, args []string) error {
+	if versionFlag {
+		fmt.Println(version.Version)
+		return nil
+	}
 	cfg, err := internal.NewConfig()
 	if err != nil {
 		return err
@@ -69,6 +76,7 @@ func init() {
 	rootCmd.PersistentFlags().BoolP("cache-access-token", "e", false, "Cache access token")
 	rootCmd.PersistentFlags().BoolP("debug", "g", false, "Debug mode")
 	rootCmd.PersistentFlags().BoolP("debug-api-calls", "d", false, "Debug API calls")
+	rootCmd.Flags().BoolVarP(&versionFlag, "version", "v", false, "Prints oktaws' version")
 	viper.BindPFlag("auth-flow", rootCmd.PersistentFlags().Lookup("auth-flow"))
 	viper.BindPFlag("org-domain", rootCmd.PersistentFlags().Lookup("org-domain"))
 	viper.BindPFlag("oidc-client-id", rootCmd.PersistentFlags().Lookup("oidc-client-id"))
