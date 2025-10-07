@@ -1,6 +1,6 @@
 package main
 
-import "oktaws/cmd"
+import "github.com/vahid-haghighat/oktaws/cmd"
 
 func main() {
 	cmd.Execute()

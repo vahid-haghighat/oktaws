@@ -1,4 +1,4 @@
-module oktaws
+module github.com/vahid-haghighat/oktaws
 
 go 1.24
 

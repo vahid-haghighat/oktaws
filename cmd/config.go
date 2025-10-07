@@ -2,10 +2,11 @@ package cmd
 
 import (
 	"fmt"
-	"oktaws/internal"
 	"os"
 	"path/filepath"
 	"strings"
+
+	"github.com/vahid-haghighat/oktaws/internal"
 
 	"github.com/spf13/cobra"
 )

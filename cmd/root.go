@@ -2,8 +2,9 @@ package cmd
 
 import (
 	"fmt"
-	"oktaws/internal"
 	"os"
+
+	"github.com/vahid-haghighat/oktaws/internal"
 
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
