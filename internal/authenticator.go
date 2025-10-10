@@ -6,6 +6,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"io"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -531,7 +532,8 @@ func (a *Authenticator) outputCredentials(creds *sts.Credentials) error {
 		if err := a.writeCredentialsFile(creds); err != nil {
 			return fmt.Errorf("failed to write credentials: %w", err)
 		}
-		fmt.Printf("\n✓ Credentials written to profile: %s\n", a.config.Profile)
+		log.Printf("Credentials written to profile: %s", a.config.Profile)
+		return nil
 	}
 
 	switch a.config.Format {
